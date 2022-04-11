@@ -34,7 +34,7 @@ export default {
     Floor,
     Like,
     Rank,
-  },
+  } 
 };
 </script>
 

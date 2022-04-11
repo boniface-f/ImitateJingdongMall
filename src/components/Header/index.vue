@@ -6,8 +6,8 @@
         <div class="loginList">
           <p>尚品汇欢迎您！</p>
           <p>
-            <span>请</span>
-            <router-link to="/login">登录</router-link>
+            <span ></span>
+            <router-link to="/login">请登录</router-link>
             <router-link to="/register" class="register">免费注册</router-link>
           </p>
         </div>

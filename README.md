@@ -1,7 +1,5 @@
 # app
 
-source ： https://gitee.com/jch1011/guigu
-
 ## Project setup
 ```
 npm install
