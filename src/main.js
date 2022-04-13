@@ -10,6 +10,9 @@ import { reqCategoryList } from "@/axios"
 reqCategoryList();
 
 import store from "@/store"
+import "@/mock/mockServer"
+import "swiper/css/swiper.css"
+
 Vue.component(TypeNav.name, TypeNav)
 
 new Vue({

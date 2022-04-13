@@ -14,7 +14,10 @@ import Footer from "./components/Footer";
 export default {
   components: {
     Header,
-    Footer
+    Footer,
+  },
+  mounted() {
+    this.$store.dispatch("categoryList");
   },
 };
 </script>
