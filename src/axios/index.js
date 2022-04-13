@@ -3,4 +3,5 @@ import requestsMock from "./reqMock";
 
 // export const reqCategoryList = () => requests({ url: '/product/getBaseCategoryList', mothed: 'get' })
 export const reqCategoryList = () => requestsMock({ url: '/category', mothed: 'get' })
-export const reqbanner = () => requestsMock.get('/banner')
+export const reqBanner = () => requestsMock.get('/banner')
+export const reqFloor = () => requestsMock.get('/floor')

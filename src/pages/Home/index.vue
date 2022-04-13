@@ -10,9 +10,9 @@
     <!-- 猜你喜欢 -->
     <Like />
     <!--楼层-->
-    <Floor />
-    <!--楼层-->
-    <Floor />
+    <!-- 父传子proprs方法 -->
+    <Floor v-for="(floor, i) in floorList" :key="floor.id" :list="floor" />
+
     <!--商标-->
     <Brand />
   </div>
@@ -25,6 +25,7 @@ import Like from "./Like/Like";
 import Rank from "./Rank/Rank";
 import ListContainer from "@/pages/Home/ListContainer";
 import Recommend from "@/pages/Home/Recommend";
+import { mapState } from "vuex";
 
 export default {
   components: {
@@ -34,7 +35,15 @@ export default {
     Floor,
     Like,
     Rank,
-  } 
+  },
+  mounted() {
+    this.$store.dispatch("getFloorList");
+  },
+  computed: {
+    ...mapState({
+      floorList: (stata) => stata.home.floorList,
+    }),
+  },
 };
 </script>
 

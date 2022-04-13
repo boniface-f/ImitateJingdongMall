@@ -3,7 +3,7 @@
     <div class="sortList clearfix">
       <div class="center">
         <!--banner轮播-->
-        <div class="swiper-container" id="mySwiper">
+        <div class="swiper-container" ref="mySwiper">
           <div class="swiper-wrapper">
             <div
               class="swiper-slide"
@@ -100,8 +100,8 @@ import Swiper from "swiper";
 export default {
   name: "",
   mounted() {
-    this.$store.dispatch("bannerList");
-    setTimeout(() => {
+    this.$store.dispatch("getBannerList");
+    /*     setTimeout(() => {
       var mySwiper = new Swiper(".swiper-container", {
         // direction: 'vertical', // 垂直切换选项
         loop: true, // 循环模式选项
@@ -116,12 +116,35 @@ export default {
           prevEl: ".swiper-button-prev",
         },
       });
-    }, 2000);
+    }, 2000); */
   },
   computed: {
     ...mapState({
       bannerList: (state) => state.home.bannerList,
     }),
+  },
+  watch: {
+    bannerList: {
+      handler(newValue, oldValue) {
+        //在获取服务器数据之后，执行循环结束之后，执行回调
+        this.$nextTick(() => {
+          var mySwiper = new Swiper(this.$refs.mySwiper, {
+            // direction: 'vertical', // 垂直切换选项
+            loop: true, // 循环模式选项
+
+            // 如果需要分页器
+            pagination: {
+              el: ".swiper-pagination",
+            },
+            // 如果需要前进后退按钮
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+          });
+        });
+      },
+    },
   },
 };
 </script>

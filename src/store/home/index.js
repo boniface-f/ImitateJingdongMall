@@ -1,8 +1,9 @@
-import { reqbanner, reqCategoryList } from "@/axios"
+import { reqBanner, reqCategoryList, reqFloor } from "@/axios"
 
 const state = {
     categoryList: [],
-    bannerList: []
+    bannerList: [],
+    floorList: []
 }
 
 const mutations = {
@@ -11,21 +12,30 @@ const mutations = {
     },
     bannerList(state, bannerList) {
         state.bannerList = bannerList;
+    },
+    floorList(state, floorList) {
+        state.floorList = floorList;
     }
 }
 
 const actions = {
-    async categoryList({ commit }) {
+    async getCategoryList({ commit }) {
         let res = await reqCategoryList();
         if (res.code == 200) {
             commit('CL', res.data)
         }
     },
-    async bannerList({ commit }) {
-        let res = await reqbanner();
+    async getBannerList({ commit }) {
+        let res = await reqBanner();
         // console.log(res);
         if (res.code == 200) {
             commit('bannerList', res.data)
+        }
+    },
+    async getFloorList({ commit }) {
+        let res = await reqFloor();
+        if (res.code == 200) {
+            commit("floorList", res.data)
         }
     }
 }
